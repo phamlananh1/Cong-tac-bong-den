@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <form>
+        <input type="button" id="congtac" value="Công Tắc">
+        <div id="div"></div>
+    </form>
+</head>
+<body>
+<script>
+    var CongTac = function () {
+        this.ketNoiDen = function (bongDen) {
+            this.bongDen = bongDen;
+        };
+        this.congtacbat = function () {
+            this.trangthai = true;
+        };
+        this.congtactat = function () {
+            this.trangthai = false;
+        }
+    };
+    var BongDen = function () {
+        this.anhsang = function () {
+            return this.trangthai;
+        };
+        this.denbat = function () {
+            this.trangthai = true;
+            document.getElementById("div").innerHTML += "Đèn bật" + "</br>";
+        };
+        this.dentat = function () {
+            this.trangthai = false;
+            document.getElementById("div").innerHTML += "Đèn tắt" + "<br/>";
+        }
+    };
+    var congTac = new CongTac();
+    var den = new BongDen();
+    congTac.ketNoiDen(den);
+    document.getElementById("congtac").addEventListener("click", function () {
+        if (this.trangthai){
+            congTac.congtacbat();
+            den.denbat();
+            this.trangthai = false;
+        }
+        else {
+            congTac.congtactat();
+            den.dentat();
+            this.trangthai = true;
+        }
+    })
+
+</script>
+</body>
+</html>
